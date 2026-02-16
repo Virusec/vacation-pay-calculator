@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: vacation-pay-calculator
+server:
+  port: 8082
