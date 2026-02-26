@@ -1,4 +1,4 @@
-package com.example.vacationpay.strategy;
+package com.example.vacationpay.service.strategy;
 
 import com.example.vacationpay.Query;
 
