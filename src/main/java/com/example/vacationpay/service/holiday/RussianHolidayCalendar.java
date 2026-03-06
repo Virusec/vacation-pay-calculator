@@ -10,7 +10,7 @@ import java.util.Set;
 /**
  * @author Anatoliy Shikin
  */
-//@Component
+@Component
 public class RussianHolidayCalendar implements HolidayCalendar {
     private static final Set<MonthDay> FIXED_HOLIDAYS_2026 = Set.of(
             MonthDay.of(Month.JANUARY, 1),
@@ -23,7 +23,6 @@ public class RussianHolidayCalendar implements HolidayCalendar {
             MonthDay.of(Month.FEBRUARY, 23),
             MonthDay.of(Month.MARCH, 9),
             MonthDay.of(Month.MAY, 1),
-            MonthDay.of(Month.MAY, 11),
             MonthDay.of(Month.MAY, 11),
             MonthDay.of(Month.JUNE, 12),
             MonthDay.of(Month.NOVEMBER, 4),

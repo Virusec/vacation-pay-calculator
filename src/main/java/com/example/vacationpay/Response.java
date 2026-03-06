@@ -11,4 +11,6 @@ import java.math.BigDecimal;
 public class Response {
     private BigDecimal averageSalary;
     private BigDecimal amount;
+    private int vacationDaysRequested;
+    private int payableDays;
 }

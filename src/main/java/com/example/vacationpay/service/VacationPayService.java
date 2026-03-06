@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 /**
  * @author Anatoliy Shikin
@@ -23,19 +25,23 @@ public class VacationPayService {
         Response response = new Response();
         BigDecimal salaryPerDay = query.getAverageSalary()
                 .divide(AVERAGE_MONTHLY_NUMBER_OF_CALENDAR_DAY, 2, RoundingMode.HALF_UP);
-
-        System.out.println(salaryPerDay);
-
         int payableDays = vacationDaysCounterContext.countPayableVacationDays(query);
-
-        System.out.println(payableDays);
-
         BigDecimal amount = salaryPerDay.multiply(BigDecimal.valueOf(payableDays));
-
-        System.out.println("amount = " + amount);
+        int requestedDays = getRequestedDays(query);
 
         response.setAmount(amount);
         response.setAverageSalary(salaryPerDay);
+        response.setPayableDays(payableDays);
+        response.setVacationDaysRequested(requestedDays);
         return response;
+    }
+
+    private int getRequestedDays(Query query) {
+        if (query.getVacationDays() != null) {
+            return query.getVacationDays();
+        }
+        LocalDate start = query.getStartDate();
+        LocalDate end = query.getEndDate();
+        return (int) ChronoUnit.DAYS.between(start, end) + 1;
     }
 }
