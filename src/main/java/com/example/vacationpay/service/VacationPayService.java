@@ -27,7 +27,7 @@ public class VacationPayService {
                 .divide(AVERAGE_MONTHLY_NUMBER_OF_CALENDAR_DAY, 2, RoundingMode.HALF_UP);
         int payableDays = vacationDaysCounterContext.countPayableVacationDays(query);
         BigDecimal amount = salaryPerDay.multiply(BigDecimal.valueOf(payableDays));
-        int requestedDays = getRequestedDays(query);
+        Integer requestedDays = getRequestedDays(query);
 
         response.setAmount(amount);
         response.setAverageSalary(salaryPerDay);
@@ -36,7 +36,7 @@ public class VacationPayService {
         return response;
     }
 
-    private int getRequestedDays(Query query) {
+    private Integer getRequestedDays(Query query) {
         if (query.getVacationDays() != null) {
             return query.getVacationDays();
         }
