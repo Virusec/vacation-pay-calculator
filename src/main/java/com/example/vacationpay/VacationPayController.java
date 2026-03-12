@@ -1,6 +1,7 @@
 package com.example.vacationpay;
 
 import com.example.vacationpay.service.VacationPayService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,7 @@ public class VacationPayController {
     }
 
     @GetMapping("/calculate")
-    public Response calculate(Query query) {
+    public Response calculate(@Valid Query query) {
         return vacationPayService.calculate(query);
     }
 }

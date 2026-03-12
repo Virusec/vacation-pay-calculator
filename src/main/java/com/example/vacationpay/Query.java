@@ -1,6 +1,6 @@
 package com.example.vacationpay;
 
-import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;
@@ -15,12 +15,12 @@ import java.time.LocalDate;
 @Data
 public class Query {
     @NotNull
-    @Min(0)
+    @DecimalMin(value = "0", inclusive = false)
     private BigDecimal averageSalary;
     @Positive
     private Integer vacationDays;
-    @DateTimeFormat
+    @DateTimeFormat(iso =  DateTimeFormat.ISO.DATE)
     private LocalDate startDate;
-    @DateTimeFormat
+    @DateTimeFormat(iso =  DateTimeFormat.ISO.DATE)
     private LocalDate endDate;
 }
